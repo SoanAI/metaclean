@@ -57,10 +57,11 @@ export default function ImageCleaner() {
           setFilename(cleanName);
           setDownloadUrl(cleanUrl);
           setStatus("done");
-          if (!localStorage.getItem("metaclean_paid")) {
-  setShowPopup(true);
-}
 
+          // Show popup ONLY if user has not paid
+          if (!localStorage.getItem("metaclean_paid")) {
+            setShowPopup(true);
+          }
 
           URL.revokeObjectURL(objectUrl);
         },
@@ -110,13 +111,13 @@ export default function ImageCleaner() {
               Upload a screenshot to remove metadata
             </p>
             <button
-             onClick={handleSelect}
-             disabled={status === "processing"}
-             className="mt-6 rounded-lg bg-black px-8 py-4 text-white disabled:opacity-50"
-           >
-             Select Image
-            </button>
+              onClick={handleSelect}
+              disabled={status !== "idle"}
 
+              className="mt-6 rounded-lg bg-black px-8 py-4 text-white disabled:opacity-50"
+            >
+              Select Image
+            </button>
           </>
         )}
 

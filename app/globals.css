@@ -1,4 +1,21 @@
 @import "tailwindcss";
+/* Prevent scroll chaining & jitter */
+html,
+body {
+  overscroll-behavior: none;
+  height: 100%;
+}
+
+/* Prevent horizontal micro-movements */
+body {
+  overflow-x: hidden;
+}
+
+/* Stable scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
 
 :root {
   --background: #ffffff;
